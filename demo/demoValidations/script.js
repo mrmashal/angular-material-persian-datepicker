@@ -1,4 +1,5 @@
-angular.module('datepickerValidations', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
+angular.module('datepickerValidations', ['ngMaterial', 'ngMessages', 'angular-material-persian-datepicker'])
+.controller('AppCtrl', function() {
   this.myDate = new Date();
 
   this.minDate = new Date(
@@ -15,6 +16,6 @@ angular.module('datepickerValidations', ['ngMaterial', 'ngMessages']).controller
 
   this.onlyWeekendsPredicate = function(date) {
     var day = date.getDay();
-    return day === 0 || day === 6;
+    return day === 4 || day === 5;
   };
 });
