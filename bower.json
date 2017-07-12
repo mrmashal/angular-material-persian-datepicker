@@ -1,5 +1,6 @@
 {
   "name": "angular-material-persian-datepicker",
+  "version": "1.1.1",
   "description": "Persian Datepicker for AngularJS Material",
   "main": [
     "src/components/persian-datepicker/datePicker.js",
