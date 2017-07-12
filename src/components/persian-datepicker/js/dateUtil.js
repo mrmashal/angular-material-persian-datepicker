@@ -5,7 +5,7 @@
      * Utility for performing date calculations to facilitate operation of the calendar and
      * datepicker.
      */
-    angular.module('angular-material-persian-datepicker').factory('$$mdDateUtil', function() {
+    angular.module('angular-material-persian-datepicker').factory('$$mdPersianDateUtil', function() {
         return {
             getFirstDateOfMonth: getFirstDateOfMonth,
             getNumberOfDaysInMonth: getNumberOfDaysInMonth,

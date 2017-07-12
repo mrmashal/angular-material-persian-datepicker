@@ -46,15 +46,15 @@
    * Controller for a single calendar month.
    * @ngInject @constructor
    */
-  function PersianCalendarMonthBodyCtrl($element, $$mdDateUtil, $mdDateLocale) {
+  function PersianCalendarMonthBodyCtrl($element, $$mdPersianDateUtil, $mdPersianDateLocale) {
     /** @final {!angular.JQLite} */
     this.$element = $element;
 
     /** @final */
-    this.dateUtil = $$mdDateUtil;
+    this.dateUtil = $$mdPersianDateUtil;
 
     /** @final */
-    this.dateLocale = $mdDateLocale;
+    this.dateLocale = $mdPersianDateLocale;
 
     /** @type {Object} Reference to the month view. */
     this.monthCtrl = null;

@@ -7,9 +7,9 @@
      * @module angular-material-persian-datepicker
      *
      * @description
-     * The `$mdPersianDateLocaleProvider` is the provider that creates the `$mdDateLocale` service.
+     * The `$mdPersianDateLocaleProvider` is the provider that creates the `$mdPersianDateLocale` service.
      * This provider that allows the user to specify messages, formatters, and parsers for date
-     * internationalization. The `$mdDateLocale` service itself is consumed by AngularJS Material
+     * internationalization. The `$mdPersianDateLocale` service itself is consumed by AngularJS Material
      * components that deal with dates.
      *
      * @property {(Array<string>)=} months Array of month names (in order).
@@ -346,6 +346,6 @@
             return service;
         };
 
-        $provide.provider('$mdDateLocale', new PersianDateLocaleProvider());
+        $provide.provider('$mdPersianDateLocale', new PersianDateLocaleProvider());
     });
 })();

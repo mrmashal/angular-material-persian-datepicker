@@ -59,7 +59,7 @@
    * @ngInject @constructor
    */
   function PersianCalendarMonthCtrl($element, $scope, $animate, $q,
-    $$mdDateUtil, $mdDateLocale) {
+    $$mdPersianDateUtil, $mdPersianDateLocale) {
 
     /** @final {!angular.JQLite} */
     this.$element = $element;
@@ -74,10 +74,10 @@
     this.$q = $q;
 
     /** @final */
-    this.dateUtil = $$mdDateUtil;
+    this.dateUtil = $$mdPersianDateUtil;
 
     /** @final */
-    this.dateLocale = $mdDateLocale;
+    this.dateLocale = $mdPersianDateLocale;
 
     /** @final {HTMLElement} */
     this.calendarScroller = $element[0].querySelector('.md-virtual-repeat-scroller');
@@ -96,7 +96,7 @@
      * @this {HTMLTableCellElement} The cell that was clicked.
      */
     this.cellClickHandler = function() {
-      var timestamp = $$mdDateUtil.getTimestampFromNode(this);
+      var timestamp = $$mdPersianDateUtil.getTimestampFromNode(this);
       self.$scope.$apply(function() {
         self.calendarCtrl.setNgModelValue(timestamp);
       });
@@ -108,7 +108,7 @@
      * @this {HTMLTableCellElement} The cell that was clicked.
      */
     this.headerClickHandler = function() {
-      self.calendarCtrl.setCurrentView('year', $$mdDateUtil.getTimestampFromNode(this));
+      self.calendarCtrl.setCurrentView('year', $$mdPersianDateUtil.getTimestampFromNode(this));
     };
   }
 

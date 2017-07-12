@@ -88,8 +88,8 @@
    * Controller for the mdPersianCalendar component.
    * @ngInject @constructor
    */
-  function PersianCalendarCtrl($element, $scope, $$mdDateUtil, $mdUtil,
-    $mdConstant, $mdTheming, $$rAF, $attrs, $mdDateLocale) {
+  function PersianCalendarCtrl($element, $scope, $$mdPersianDateUtil, $mdUtil,
+    $mdConstant, $mdTheming, $$rAF, $attrs, $mdPersianDateLocale) {
 
     $mdTheming($element);
 
@@ -100,7 +100,7 @@
     this.$scope = $scope;
 
     /** @final */
-    this.dateUtil = $$mdDateUtil;
+    this.dateUtil = $$mdPersianDateUtil;
 
     /** @final */
     this.$mdUtil = $mdUtil;
@@ -112,7 +112,7 @@
     this.$$rAF = $$rAF;
 
     /** @final */
-    this.$mdDateLocale = $mdDateLocale;
+    this.$mdPersianDateLocale = $mdPersianDateLocale;
 
     /** @final {Date} */
     this.today = this.dateUtil.createDateAtMidnight();
@@ -236,7 +236,7 @@
      */
     this.currentView = this._currentView || 'month';
 
-    var dateLocale = this.$mdDateLocale;
+    var dateLocale = this.$mdPersianDateLocale;
 
     if (this.minDate && this.minDate > dateLocale.firstRenderableDate) {
       this.firstRenderableDate = this.minDate;

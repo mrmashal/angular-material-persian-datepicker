@@ -36,15 +36,15 @@
    * Controller for a single year.
    * @ngInject @constructor
    */
-  function PersianCalendarYearBodyCtrl($element, $$mdDateUtil, $mdDateLocale) {
+  function PersianCalendarYearBodyCtrl($element, $$mdPersianDateUtil, $mdPersianDateLocale) {
     /** @final {!angular.JQLite} */
     this.$element = $element;
 
     /** @final */
-    this.dateUtil = $$mdDateUtil;
+    this.dateUtil = $$mdPersianDateUtil;
 
     /** @final */
-    this.dateLocale = $mdDateLocale;
+    this.dateLocale = $mdPersianDateLocale;
 
     /** @type {Object} Reference to the calendar. */
     this.calendarCtrl = null;

@@ -38,14 +38,14 @@
    * * `"all"` - Hides all icons.
    * * `"calendar"` - Only hides the calendar icon.
    * * `"triangle"` - Only hides the triangle icon.
-   * @param {Object=} md-date-locale Allows for the values from the `$mdDateLocaleProvider` to be
+   * @param {Object=} md-date-locale Allows for the values from the `$mdPersianDateLocaleProvider` to be
    * ovewritten on a per-element basis (e.g. `msgOpenCalendar` can be overwritten with
    * `md-date-locale="{ msgOpenCalendar: 'Open a special calendar' }"`).
    *
    * @description
    * `<md-persian-datepicker>` is a component used to select a single date.
    * For information on how to configure internationalization for the date picker,
-   * see `$mdDateLocaleProvider`.
+   * see `$mdPersianDateLocaleProvider`.
    *
    * This component supports [ngMessages](https://docs.angularjs.org/api/ngMessages/directive/ngMessages).
    * Supported attributes are:
@@ -239,13 +239,13 @@
    * @ngInject @constructor
    */
   function PersianDatePickerCtrl($scope, $element, $attrs, $window, $mdConstant,
-    $mdTheming, $mdUtil, $mdDateLocale, $$mdDateUtil, $$rAF, $filter) {
+    $mdTheming, $mdUtil, $mdPersianDateLocale, $$mdPersianDateUtil, $$rAF, $filter) {
 
     /** @final */
     this.$window = $window;
 
     /** @final */
-    this.dateUtil = $$mdDateUtil;
+    this.dateUtil = $$mdPersianDateUtil;
 
     /** @final */
     this.$mdConstant = $mdConstant;
@@ -257,7 +257,7 @@
     this.$$rAF = $$rAF;
 
     /** @final */
-    this.$mdDateLocale = $mdDateLocale;
+    this.$mdPersianDateLocale = $mdPersianDateLocale;
 
     /**
      * The root document element. This is used for attaching a top-level click handler to
@@ -406,10 +406,10 @@
 
     /**
      * Holds locale-specific formatters, parsers, labels etc. Allows
-     * the user to override specific ones from the $mdDateLocale provider.
+     * the user to override specific ones from the $mdPersianDateLocale provider.
      * @type {!Object}
      */
-    this.locale = this.dateLocale ? angular.extend({}, this.$mdDateLocale, this.dateLocale) : this.$mdDateLocale;
+    this.locale = this.dateLocale ? angular.extend({}, this.$mdPersianDateLocale, this.dateLocale) : this.$mdPersianDateLocale;
 
     this.installPropertyInterceptors();
     this.attachChangeListeners();

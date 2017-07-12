@@ -47,7 +47,7 @@
    * Controller for the mdPersianCalendar component.
    * @ngInject @constructor
    */
-  function PersianCalendarYearCtrl($element, $scope, $animate, $q, $$mdDateUtil) {
+  function PersianCalendarYearCtrl($element, $scope, $animate, $q, $$mdPersianDateUtil) {
 
     /** @final {!angular.JQLite} */
     this.$element = $element;
@@ -62,7 +62,7 @@
     this.$q = $q;
 
     /** @final */
-    this.dateUtil = $$mdDateUtil;
+    this.dateUtil = $$mdPersianDateUtil;
 
     /** @final {HTMLElement} */
     this.calendarScroller = $element[0].querySelector('.md-virtual-repeat-scroller');
@@ -81,7 +81,7 @@
      * @this {HTMLTableCellElement} The cell that was clicked.
      */
     this.cellClickHandler = function() {
-      self.calendarCtrl.setCurrentView('month', $$mdDateUtil.getTimestampFromNode(this));
+      self.calendarCtrl.setCurrentView('month', $$mdPersianDateUtil.getTimestampFromNode(this));
     };
   }
 
