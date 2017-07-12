@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('angular-material-persian-datepicker')
-    .directive('mdPersianCalendarMonth', calendarDirective);
+    .directive('mdPersianCalendarMonth', persianCalendarDirective);
 
   /**
    * Height of one calendar month tbody. This must be made known to the virtual-repeat and is
@@ -17,7 +17,7 @@
   var TBODY_SINGLE_ROW_HEIGHT = 45;
 
   /** Private directive that represents a list of months inside the calendar. */
-  function calendarDirective() {
+  function persianCalendarDirective() {
     return {
       template:
         '<table aria-hidden="true" class="md-calendar-day-header"><thead></thead></table>' +
@@ -43,7 +43,7 @@
           '</md-virtual-repeat-container>' +
         '</div>',
       require: ['^^mdPersianCalendar', 'mdPersianCalendarMonth'],
-      controller: CalendarMonthCtrl,
+      controller: PersianCalendarMonthCtrl,
       controllerAs: 'monthCtrl',
       bindToController: true,
       link: function(scope, element, attrs, controllers) {
@@ -58,7 +58,7 @@
    * Controller for the calendar month component.
    * @ngInject @constructor
    */
-  function CalendarMonthCtrl($element, $scope, $animate, $q,
+  function PersianCalendarMonthCtrl($element, $scope, $animate, $q,
     $$mdDateUtil, $mdDateLocale) {
 
     /** @final {!angular.JQLite} */
@@ -118,7 +118,7 @@
    * Initialize the controller by saving a reference to the calendar and
    * setting up the object that will be iterated by the virtual repeater.
    */
-  CalendarMonthCtrl.prototype.initialize = function(calendarCtrl) {
+  PersianCalendarMonthCtrl.prototype.initialize = function(calendarCtrl) {
     /**
      * Dummy array-like object for virtual-repeat to iterate over. The length is the total
      * number of months that can be viewed. We add 2 months: one to include the current month
@@ -147,7 +147,7 @@
    * Gets the "index" of the currently selected date as it would be in the virtual-repeat.
    * @returns {number}
    */
-  CalendarMonthCtrl.prototype.getSelectedMonthIndex = function() {
+  PersianCalendarMonthCtrl.prototype.getSelectedMonthIndex = function() {
     var calendarCtrl = this.calendarCtrl;
 
     return this.dateUtil.getMonthDistance(
@@ -160,7 +160,7 @@
    * Change the selected date in the calendar (ngModel value has already been changed).
    * @param {Date} date
    */
-  CalendarMonthCtrl.prototype.changeSelectedDate = function(date) {
+  PersianCalendarMonthCtrl.prototype.changeSelectedDate = function(date) {
     var self = this;
     var calendarCtrl = self.calendarCtrl;
     var previousSelectedDate = calendarCtrl.selectedDate;
@@ -195,7 +195,7 @@
    * month, the displayed month will be transitioned.
    * @param {Date} date
    */
-  CalendarMonthCtrl.prototype.changeDisplayDate = function(date) {
+  PersianCalendarMonthCtrl.prototype.changeDisplayDate = function(date) {
     // Initialization is deferred until this function is called because we want to reflect
     // the starting value of ngModel.
     if (!this.isInitialized) {
@@ -228,7 +228,7 @@
    * @param {Date} date
    * @returns {angular.$q.Promise} The animation promise.
    */
-  CalendarMonthCtrl.prototype.animateDateChange = function(date) {
+  PersianCalendarMonthCtrl.prototype.animateDateChange = function(date) {
     if (this.dateUtil.isValidDate(date)) {
       var monthDistance = this.dateUtil.getMonthDistance(this.calendarCtrl.firstRenderableDate, date);
       this.calendarScroller.scrollTop = monthDistance * TBODY_HEIGHT;
@@ -241,7 +241,7 @@
    * Builds and appends a day-of-the-week header to the calendar.
    * This should only need to be called once during initialization.
    */
-  CalendarMonthCtrl.prototype.buildWeekHeader = function() {
+  PersianCalendarMonthCtrl.prototype.buildWeekHeader = function() {
     var firstDayOfWeek = this.dateLocale.firstDayOfWeek;
     var shortDays = this.dateLocale.shortDays;
 
@@ -258,7 +258,7 @@
   /**
    * Attaches listeners for the scope events that are broadcast by the calendar.
    */
-  CalendarMonthCtrl.prototype.attachScopeListeners = function() {
+  PersianCalendarMonthCtrl.prototype.attachScopeListeners = function() {
     var self = this;
 
     self.$scope.$on('md-calendar-parent-changed', function(event, value) {
@@ -273,7 +273,7 @@
    * @param {Object} event Scope event object passed by the calendar.
    * @param {String} action Action, corresponding to the key that was pressed.
    */
-  CalendarMonthCtrl.prototype.handleKeyEvent = function(event, action) {
+  PersianCalendarMonthCtrl.prototype.handleKeyEvent = function(event, action) {
     var calendarCtrl = this.calendarCtrl;
     var displayDate = calendarCtrl.displayDate;
 

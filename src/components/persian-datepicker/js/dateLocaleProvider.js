@@ -3,11 +3,11 @@
 
     /**
      * @ngdoc service
-     * @name $mdDateLocaleProvider
-     * @module material.components.datepicker
+     * @name $mdPersianDateLocaleProvider
+     * @module angular-material-persian-datepicker
      *
      * @description
-     * The `$mdDateLocaleProvider` is the provider that creates the `$mdDateLocale` service.
+     * The `$mdPersianDateLocaleProvider` is the provider that creates the `$mdDateLocale` service.
      * This provider that allows the user to specify messages, formatters, and parsers for date
      * internationalization. The `$mdDateLocale` service itself is consumed by AngularJS Material
      * components that deal with dates.
@@ -39,48 +39,48 @@
      *
      * @usage
      * <hljs lang="js">
-     * myAppModule.config(function($mdDateLocaleProvider) {
+     * myAppModule.config(function($mdPersianDateLocaleProvider) {
      *
      *     // Example of a French localization.
-     *     $mdDateLocaleProvider.months = ['janvier', 'février', 'mars', ...];
-     *     $mdDateLocaleProvider.shortMonths = ['janv', 'févr', 'mars', ...];
-     *     $mdDateLocaleProvider.days = ['dimanche', 'lundi', 'mardi', ...];
-     *     $mdDateLocaleProvider.shortDays = ['Di', 'Lu', 'Ma', ...];
+     *     $mdPersianDateLocaleProvider.months = ['janvier', 'février', 'mars', ...];
+     *     $mdPersianDateLocaleProvider.shortMonths = ['janv', 'févr', 'mars', ...];
+     *     $mdPersianDateLocaleProvider.days = ['dimanche', 'lundi', 'mardi', ...];
+     *     $mdPersianDateLocaleProvider.shortDays = ['Di', 'Lu', 'Ma', ...];
      *
      *     // Can change week display to start on Monday.
-     *     $mdDateLocaleProvider.firstDayOfWeek = 1;
+     *     $mdPersianDateLocaleProvider.firstDayOfWeek = 1;
      *
      *     // Optional.
-     *     $mdDateLocaleProvider.dates = [1, 2, 3, 4, 5, 6, ...];
+     *     $mdPersianDateLocaleProvider.dates = [1, 2, 3, 4, 5, 6, ...];
      *
      *     // Example uses moment.js to parse and format dates.
-     *     $mdDateLocaleProvider.parseDate = function(dateString) {
+     *     $mdPersianDateLocaleProvider.parseDate = function(dateString) {
      *       var m = moment(dateString, 'L', true);
      *       return m.isValid() ? m.toDate() : new Date(NaN);
      *     };
      *
-     *     $mdDateLocaleProvider.formatDate = function(date) {
+     *     $mdPersianDateLocaleProvider.formatDate = function(date) {
      *       var m = moment(date);
      *       return m.isValid() ? m.format('L') : '';
      *     };
      *
-     *     $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
+     *     $mdPersianDateLocaleProvider.monthHeaderFormatter = function(date) {
      *       return myShortMonths[date.getMonth()] + ' ' + date.getFullYear();
      *     };
      *
      *     // In addition to date display, date components also need localized messages
      *     // for aria-labels for screen-reader users.
      *
-     *     $mdDateLocaleProvider.weekNumberFormatter = function(weekNumber) {
+     *     $mdPersianDateLocaleProvider.weekNumberFormatter = function(weekNumber) {
      *       return 'Semaine ' + weekNumber;
      *     };
      *
-     *     $mdDateLocaleProvider.msgCalendar = 'Calendrier';
-     *     $mdDateLocaleProvider.msgOpenCalendar = 'Ouvrir le calendrier';
+     *     $mdPersianDateLocaleProvider.msgCalendar = 'Calendrier';
+     *     $mdPersianDateLocaleProvider.msgOpenCalendar = 'Ouvrir le calendrier';
      *
      *     // You can also set when your calendar begins and ends.
-     *     $mdDateLocaleProvider.firstRenderableDate = new Date(1776, 6, 4);
-     *     $mdDateLocaleProvider.lastRenderableDate = new Date(2012, 11, 21);
+     *     $mdPersianDateLocaleProvider.firstRenderableDate = new Date(1776, 6, 4);
+     *     $mdPersianDateLocaleProvider.lastRenderableDate = new Date(2012, 11, 21);
      * });
      * </hljs>
      *
@@ -89,7 +89,7 @@
         // TODO(jelbourn): Assert provided values are correctly formatted. Need assertions.
 
         /** @constructor */
-        function DateLocaleProvider() {
+        function PersianDateLocaleProvider() {
             /** Array of full month names. E.g., ['January', 'Febuary', ...] */
             this.months = null;
 
@@ -158,7 +158,7 @@
          * @param $locale
          * @returns {DateLocale}
          */
-        DateLocaleProvider.prototype.$get = function($locale, $filter) {
+        PersianDateLocaleProvider.prototype.$get = function($locale, $filter) {
             /**
              * Default date-to-string formatting function.
              * @param {!Date} date
@@ -346,6 +346,6 @@
             return service;
         };
 
-        $provide.provider('$mdDateLocale', new DateLocaleProvider());
+        $provide.provider('$mdDateLocale', new PersianDateLocaleProvider());
     });
 })();

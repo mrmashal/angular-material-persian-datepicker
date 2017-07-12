@@ -22,7 +22,7 @@
    * </hljs>
    */
   angular.module('angular-material-persian-datepicker')
-    .directive('mdPersianCalendar', calendarDirective);
+    .directive('mdPersianCalendar', persianCalendarDirective);
 
   // POST RELEASE
   // TODO(jelbourn): Mac Cmd + left / right == Home / End
@@ -37,7 +37,7 @@
   //     announcement and key handling).
   // Read-only calendar (not just date-picker).
 
-  function calendarDirective() {
+  function persianCalendarDirective() {
     return {
       template: function(tElement, tAttr) {
         // TODO(crisbeto): This is a workaround that allows the calendar to work, without
@@ -61,7 +61,7 @@
         _currentView: '@mdCurrentView'
       },
       require: ['ngModel', 'mdPersianCalendar'],
-      controller: CalendarCtrl,
+      controller: PersianCalendarCtrl,
       controllerAs: 'calendarCtrl',
       bindToController: true,
       link: function(scope, element, attrs, controllers) {
@@ -88,7 +88,7 @@
    * Controller for the mdPersianCalendar component.
    * @ngInject @constructor
    */
-  function CalendarCtrl($element, $scope, $$mdDateUtil, $mdUtil,
+  function PersianCalendarCtrl($element, $scope, $$mdDateUtil, $mdUtil,
     $mdConstant, $mdTheming, $$rAF, $attrs, $mdDateLocale) {
 
     $mdTheming($element);
@@ -226,7 +226,7 @@
    * AngularJS Lifecycle hook for newer AngularJS versions.
    * Bindings are not guaranteed to have been assigned in the controller, but they are in the $onInit hook.
    */
-  CalendarCtrl.prototype.$onInit = function() {
+  PersianCalendarCtrl.prototype.$onInit = function() {
 
     /**
      * The currently visible calendar view. Note the prefix on the scope value,
@@ -255,7 +255,7 @@
    * Sets up the controller's reference to ngModelController.
    * @param {!angular.NgModelController} ngModelCtrl
    */
-  CalendarCtrl.prototype.configureNgModel = function(ngModelCtrl) {
+  PersianCalendarCtrl.prototype.configureNgModel = function(ngModelCtrl) {
     var self = this;
 
     self.ngModelCtrl = ngModelCtrl;
@@ -286,7 +286,7 @@
    * Sets the ng-model value for the calendar and emits a change event.
    * @param {Date} date
    */
-  CalendarCtrl.prototype.setNgModelValue = function(date) {
+  PersianCalendarCtrl.prototype.setNgModelValue = function(date) {
     var value = this.dateUtil.createDateAtMidnight(date);
     this.focus(value);
     this.$scope.$emit('md-calendar-change', value);
@@ -300,7 +300,7 @@
    * @param {string} newView View name to be set.
    * @param {number|Date} time Date object or a timestamp for the new display date.
    */
-  CalendarCtrl.prototype.setCurrentView = function(newView, time) {
+  PersianCalendarCtrl.prototype.setCurrentView = function(newView, time) {
     var self = this;
 
     self.$mdUtil.nextTick(function() {
@@ -316,7 +316,7 @@
    * Focus the cell corresponding to the given date.
    * @param {Date} date The date to be focused.
    */
-  CalendarCtrl.prototype.focus = function(date) {
+  PersianCalendarCtrl.prototype.focus = function(date) {
     if (this.dateUtil.isValidDate(date)) {
       var previousFocus = this.$element[0].querySelector('.md-focus');
       if (previousFocus) {
@@ -346,7 +346,7 @@
    * @returns {String} The action that should be taken, or null if the key
    * does not match a calendar shortcut.
    */
-  CalendarCtrl.prototype.getActionFromKeyEvent = function(event) {
+  PersianCalendarCtrl.prototype.getActionFromKeyEvent = function(event) {
     var keyCode = this.keyCode;
 
     switch (event.which) {
@@ -375,7 +375,7 @@
    * be to select the focused date or to navigate to focus a new date.
    * @param {KeyboardEvent} event
    */
-  CalendarCtrl.prototype.handleKeyEvent = function(event) {
+  PersianCalendarCtrl.prototype.handleKeyEvent = function(event) {
     var self = this;
 
     this.$scope.$apply(function() {
@@ -411,7 +411,7 @@
    *
    * @param {object} childCtrl The child controller whose scrollbar should be hidden.
    */
-  CalendarCtrl.prototype.hideVerticalScrollbar = function(childCtrl) {
+  PersianCalendarCtrl.prototype.hideVerticalScrollbar = function(childCtrl) {
     var self = this;
     var element = childCtrl.$element[0];
     var scrollMask = element.querySelector('.md-calendar-scroll-mask');
@@ -446,7 +446,7 @@
    * @param {string} namespace Namespace for the id. (month, year etc.)
    * @returns {string}
    */
-  CalendarCtrl.prototype.getDateId = function(date, namespace) {
+  PersianCalendarCtrl.prototype.getDateId = function(date, namespace) {
     if (!namespace) {
       throw new Error('A namespace for the date id has to be specified.');
     }
@@ -477,7 +477,7 @@
    * in place yet. The case, in which this is an issue, is when the repeater has less
    * than a page of content (e.g. a month or year view has a min or max date).
    */
-  CalendarCtrl.prototype.updateVirtualRepeat = function() {
+  PersianCalendarCtrl.prototype.updateVirtualRepeat = function() {
     var scope = this.$scope;
     var virtualRepeatResizeListener = scope.$on('$md-resize-enable', function() {
       if (!scope.$$phase) {

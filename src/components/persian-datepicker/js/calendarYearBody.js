@@ -2,17 +2,17 @@
   'use strict';
 
   angular.module('angular-material-persian-datepicker')
-      .directive('mdPersianCalendarYearBody', mdCalendarYearDirective);
+      .directive('mdPersianCalendarYearBody', mdPersianCalendarYearDirective);
 
   /**
    * Private component, consumed by the md-persian-calendar-year, which separates the DOM construction logic
    * and allows for the year view to use md-virtual-repeat.
    */
-  function mdCalendarYearDirective() {
+  function mdPersianCalendarYearDirective() {
     return {
       require: ['^^mdPersianCalendar', '^^mdPersianCalendarYear', 'mdPersianCalendarYearBody'],
       scope: { offset: '=mdYearOffset' },
-      controller: CalendarYearBodyCtrl,
+      controller: PersianCalendarYearBodyCtrl,
       controllerAs: 'mdYearBodyCtrl',
       bindToController: true,
       link: function(scope, element, attrs, controllers) {
@@ -36,7 +36,7 @@
    * Controller for a single year.
    * @ngInject @constructor
    */
-  function CalendarYearBodyCtrl($element, $$mdDateUtil, $mdDateLocale) {
+  function PersianCalendarYearBodyCtrl($element, $$mdDateUtil, $mdDateLocale) {
     /** @final {!angular.JQLite} */
     this.$element = $element;
 
@@ -67,7 +67,7 @@
   }
 
   /** Generate and append the content for this year to the directive element. */
-  CalendarYearBodyCtrl.prototype.generateContent = function() {
+  PersianCalendarYearBodyCtrl.prototype.generateContent = function() {
     var date = this.dateUtil.incrementYears(this.calendarCtrl.firstRenderableDate, this.offset);
 
     this.$element
@@ -87,7 +87,7 @@
    * @param {number} opt_month Zero-indexed month.
    * @returns {HTMLElement}
    */
-  CalendarYearBodyCtrl.prototype.buildMonthCell = function(year, month) {
+  PersianCalendarYearBodyCtrl.prototype.buildMonthCell = function(year, month) {
     var calendarCtrl = this.calendarCtrl;
     var yearCtrl = this.yearCtrl;
     var cell = this.buildBlankCell();
@@ -135,7 +135,7 @@
    * Builds a blank cell.
    * @return {HTMLTableCellElement}
    */
-  CalendarYearBodyCtrl.prototype.buildBlankCell = function() {
+  PersianCalendarYearBodyCtrl.prototype.buildBlankCell = function() {
     var cell = document.createElement('td');
     cell.tabIndex = -1;
     cell.classList.add('md-calendar-date');
@@ -150,7 +150,7 @@
    * @param {Date} date Date for which the content should be built.
    * @returns {DocumentFragment} A document fragment containing the months within the year.
    */
-  CalendarYearBodyCtrl.prototype.buildCalendarForYear = function(date) {
+  PersianCalendarYearBodyCtrl.prototype.buildCalendarForYear = function(date) {
     // Store rows for the month in a document fragment so that we can append them all at once.
     var year = moment(date).jYear();
     var yearBody = document.createDocumentFragment();

@@ -11,7 +11,7 @@
 
 
   angular.module('angular-material-persian-datepicker')
-      .directive('mdPersianDatepicker', datePickerDirective);
+      .directive('mdPersianDatepicker', persianDatePickerDirective);
 
   /**
    * @ngdoc directive
@@ -61,7 +61,7 @@
    *
    */
 
-  function datePickerDirective($$mdSvgRegistry, $mdUtil, $mdAria, inputDirective) {
+  function persianDatePickerDirective($$mdSvgRegistry, $mdUtil, $mdAria, inputDirective) {
     return {
       template: function(tElement, tAttrs) {
         // Buttons are not in the tab order because users can open the calendar via keyboard
@@ -131,7 +131,7 @@
         debounceInterval: '=mdDebounceInterval',
         dateLocale: '=mdDateLocale'
       },
-      controller: DatePickerCtrl,
+      controller: PersianDatePickerCtrl,
       controllerAs: 'ctrl',
       bindToController: true,
       link: function(scope, element, attr, controllers) {
@@ -238,7 +238,7 @@
    *
    * @ngInject @constructor
    */
-  function DatePickerCtrl($scope, $element, $attrs, $window, $mdConstant,
+  function PersianDatePickerCtrl($scope, $element, $attrs, $window, $mdConstant,
     $mdTheming, $mdUtil, $mdDateLocale, $$mdDateUtil, $$rAF, $filter) {
 
     /** @final */
@@ -402,7 +402,7 @@
    * AngularJS Lifecycle hook for newer AngularJS versions.
    * Bindings are not guaranteed to have been assigned in the controller, but they are in the $onInit hook.
    */
-  DatePickerCtrl.prototype.$onInit = function() {
+  PersianDatePickerCtrl.prototype.$onInit = function() {
 
     /**
      * Holds locale-specific formatters, parsers, labels etc. Allows
@@ -423,7 +423,7 @@
    * @param {Object} mdInputContainer Instance of the mdInputContainer controller.
    * @param {Object} inputDirective Config for AngularJS's `input` directive.
    */
-  DatePickerCtrl.prototype.configureNgModel = function(ngModelCtrl, mdInputContainer, inputDirective) {
+  PersianDatePickerCtrl.prototype.configureNgModel = function(ngModelCtrl, mdInputContainer, inputDirective) {
     this.ngModelCtrl = ngModelCtrl;
     this.mdInputContainer = mdInputContainer;
 
@@ -484,7 +484,7 @@
    * Events are used instead of ng-model so that updates don't infinitely update the other
    * on a change. This should also be more performant than using a $watch.
    */
-  DatePickerCtrl.prototype.attachChangeListeners = function() {
+  PersianDatePickerCtrl.prototype.attachChangeListeners = function() {
     var self = this;
 
     self.$scope.$on('md-calendar-change', function(event, date) {
@@ -502,7 +502,7 @@
   };
 
   /** Attach event listeners for user interaction. */
-  DatePickerCtrl.prototype.attachInteractionListeners = function() {
+  PersianDatePickerCtrl.prototype.attachInteractionListeners = function() {
     var self = this;
     var $scope = this.$scope;
     var keyCodes = this.$mdConstant.KEY_CODE;
@@ -533,7 +533,7 @@
    * Capture properties set to the date-picker and imperitively handle internal changes.
    * This is done to avoid setting up additional $watches.
    */
-  DatePickerCtrl.prototype.installPropertyInterceptors = function() {
+  PersianDatePickerCtrl.prototype.installPropertyInterceptors = function() {
     var self = this;
 
     if (this.$attrs.ngDisabled) {
@@ -558,7 +558,7 @@
    * Sets whether the date-picker is disabled.
    * @param {boolean} isDisabled
    */
-  DatePickerCtrl.prototype.setDisabled = function(isDisabled) {
+  PersianDatePickerCtrl.prototype.setDisabled = function(isDisabled) {
     this.isDisabled = isDisabled;
     this.inputElement.disabled = isDisabled;
 
@@ -578,7 +578,7 @@
    *
    * @param {Date=} opt_date Date to check. If not given, defaults to the datepicker's model value.
    */
-  DatePickerCtrl.prototype.updateErrorState = function(opt_date) {
+  PersianDatePickerCtrl.prototype.updateErrorState = function(opt_date) {
     var date = opt_date || this.date;
 
     // Clear any existing errors to get rid of anything that's no longer relevant.
@@ -611,7 +611,7 @@
   };
 
   /** Clears any error flags set by `updateErrorState`. */
-  DatePickerCtrl.prototype.clearErrorState = function() {
+  PersianDatePickerCtrl.prototype.clearErrorState = function() {
     this.inputContainer.classList.remove(INVALID_CLASS);
     ['mindate', 'maxdate', 'filtered', 'valid'].forEach(function(field) {
       this.ngModelCtrl.$setValidity(field, true);
@@ -619,7 +619,7 @@
   };
 
   /** Resizes the input element based on the size of its content. */
-  DatePickerCtrl.prototype.resizeInputElement = function() {
+  PersianDatePickerCtrl.prototype.resizeInputElement = function() {
     this.inputElement.size = this.inputElement.value.length + EXTRA_INPUT_SIZE;
   };
 
@@ -627,7 +627,7 @@
    * Sets the model value if the user input is a valid date.
    * Adds an invalid class to the input element if not.
    */
-  DatePickerCtrl.prototype.handleInputEvent = function() {
+  PersianDatePickerCtrl.prototype.handleInputEvent = function() {
     var inputString = this.inputElement.value;
     var parsedDate = inputString ? this.locale.parseDate(inputString) : null;
     this.dateUtil.setDateTimeToMidnight(parsedDate);
@@ -654,13 +654,13 @@
    * @param {Date=} opt_date
    * @return {boolean} Whether the date is enabled.
    */
-  DatePickerCtrl.prototype.isDateEnabled = function(opt_date) {
+  PersianDatePickerCtrl.prototype.isDateEnabled = function(opt_date) {
     return this.dateUtil.isDateWithinRange(opt_date, this.minDate, this.maxDate) &&
           (!angular.isFunction(this.dateFilter) || this.dateFilter(opt_date));
   };
 
   /** Position and attach the floating calendar to the document. */
-  DatePickerCtrl.prototype.attachCalendarPane = function() {
+  PersianDatePickerCtrl.prototype.attachCalendarPane = function() {
     var calendarPane = this.calendarPane;
     var body = document.body;
 
@@ -742,7 +742,7 @@
   };
 
   /** Detach the floating calendar pane from the document. */
-  DatePickerCtrl.prototype.detachCalendarPane = function() {
+  PersianDatePickerCtrl.prototype.detachCalendarPane = function() {
     this.$element.removeClass(OPEN_CLASS);
     this.mdInputContainer && this.mdInputContainer.element.removeClass(OPEN_CLASS);
     angular.element(document.body).removeClass('md-datepicker-is-showing');
@@ -764,7 +764,7 @@
    * Open the floating calendar pane.
    * @param {Event} event
    */
-  DatePickerCtrl.prototype.openCalendarPane = function(event) {
+  PersianDatePickerCtrl.prototype.openCalendarPane = function(event) {
     if (!this.isCalendarOpen && !this.isDisabled && !this.inputFocusedOnWindowBlur) {
       this.isCalendarOpen = this.isOpen = true;
       this.calendarPaneOpenedFrom = event.target;
@@ -795,7 +795,7 @@
   };
 
   /** Close the floating calendar pane. */
-  DatePickerCtrl.prototype.closeCalendarPane = function() {
+  PersianDatePickerCtrl.prototype.closeCalendarPane = function() {
     if (this.isCalendarOpen) {
       var self = this;
 
@@ -827,12 +827,12 @@
   };
 
   /** Gets the controller instance for the calendar in the floating pane. */
-  DatePickerCtrl.prototype.getCalendarCtrl = function() {
+  PersianDatePickerCtrl.prototype.getCalendarCtrl = function() {
     return angular.element(this.calendarPane.querySelector('md-persian-calendar')).controller('mdPersianCalendar');
   };
 
   /** Focus the calendar in the floating pane. */
-  DatePickerCtrl.prototype.focusCalendar = function() {
+  PersianDatePickerCtrl.prototype.focusCalendar = function() {
     // Use a timeout in order to allow the calendar to be rendered, as it is gated behind an ng-if.
     var self = this;
     this.$mdUtil.nextTick(function() {
@@ -844,7 +844,7 @@
    * Sets whether the input is currently focused.
    * @param {boolean} isFocused
    */
-  DatePickerCtrl.prototype.setFocused = function(isFocused) {
+  PersianDatePickerCtrl.prototype.setFocused = function(isFocused) {
     if (!isFocused) {
       this.ngModelCtrl.$setTouched();
     }
@@ -863,7 +863,7 @@
    * Closes the floating calendar pane if the click is not inside of it.
    * @param {MouseEvent} event
    */
-  DatePickerCtrl.prototype.handleBodyClick = function(event) {
+  PersianDatePickerCtrl.prototype.handleBodyClick = function(event) {
     if (this.isCalendarOpen) {
       var isInCalendar = this.$mdUtil.getClosest(event.target, 'md-persian-calendar');
 
@@ -880,7 +880,7 @@
    * whether the input was focused when the event happened, in order to prevent the calendar
    * from re-opening.
    */
-  DatePickerCtrl.prototype.handleWindowBlur = function() {
+  PersianDatePickerCtrl.prototype.handleWindowBlur = function() {
     this.inputFocusedOnWindowBlur = document.activeElement === this.inputElement;
   };
 
@@ -888,7 +888,7 @@
    * Evaluates an attribute expression against the parent scope.
    * @param {String} attr Name of the attribute to be evaluated.
    */
-  DatePickerCtrl.prototype.evalAttr = function(attr) {
+  PersianDatePickerCtrl.prototype.evalAttr = function(attr) {
     if (this.$attrs[attr]) {
       this.$scope.$parent.$eval(this.$attrs[attr]);
     }
@@ -900,7 +900,7 @@
    * the value into a Date object afterwards, before setting it on the model.
    * @param {Date=} value Date to be set as the model value.
    */
-  DatePickerCtrl.prototype.setModelValue = function(value) {
+  PersianDatePickerCtrl.prototype.setModelValue = function(value) {
     var timezone = this.$mdUtil.getModelOption(this.ngModelCtrl, 'timezone');
     this.ngModelCtrl.$setViewValue(this.ngDateFilter(value, 'yyyy-MM-dd', timezone));
   };
@@ -909,7 +909,7 @@
    * Updates the datepicker when a model change occurred externally.
    * @param {Date=} value Value that was set to the model.
    */
-  DatePickerCtrl.prototype.onExternalChange = function(value) {
+  PersianDatePickerCtrl.prototype.onExternalChange = function(value) {
     var timezone = this.$mdUtil.getModelOption(this.ngModelCtrl, 'timezone');
 
     this.date = value;

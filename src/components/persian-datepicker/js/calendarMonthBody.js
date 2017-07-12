@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('angular-material-persian-datepicker')
-      .directive('mdPersianCalendarMonthBody', mdCalendarMonthBodyDirective);
+      .directive('mdPersianCalendarMonthBody', mdPersianCalendarMonthBodyDirective);
 
   /**
    * Private directive consumed by md-persian-calendar-month. Having this directive lets the calender use
@@ -10,14 +10,14 @@
    * the rest of the calendar controller logic.
    * @ngInject
    */
-  function mdCalendarMonthBodyDirective($compile, $$mdSvgRegistry) {
+  function mdPersianCalendarMonthBodyDirective($compile, $$mdSvgRegistry) {
     var ARROW_ICON = $compile('<md-icon md-svg-src="' +
       $$mdSvgRegistry.mdTabsArrow + '"></md-icon>')({})[0];
 
     return {
       require: ['^^mdPersianCalendar', '^^mdPersianCalendarMonth', 'mdPersianCalendarMonthBody'],
       scope: { offset: '=mdMonthOffset' },
-      controller: CalendarMonthBodyCtrl,
+      controller: PersianCalendarMonthBodyCtrl,
       controllerAs: 'mdMonthBodyCtrl',
       bindToController: true,
       link: function(scope, element, attrs, controllers) {
@@ -46,7 +46,7 @@
    * Controller for a single calendar month.
    * @ngInject @constructor
    */
-  function CalendarMonthBodyCtrl($element, $$mdDateUtil, $mdDateLocale) {
+  function PersianCalendarMonthBodyCtrl($element, $$mdDateUtil, $mdDateLocale) {
     /** @final {!angular.JQLite} */
     this.$element = $element;
 
@@ -77,7 +77,7 @@
   }
 
   /** Generate and append the content for this month to the directive element. */
-  CalendarMonthBodyCtrl.prototype.generateContent = function() {
+  PersianCalendarMonthBodyCtrl.prototype.generateContent = function() {
     var date = this.dateUtil.incrementMonths(this.calendarCtrl.firstRenderableDate, this.offset);
 
     this.$element
@@ -98,7 +98,7 @@
    * @param {Date=} opt_date
    * @returns {HTMLElement}
    */
-  CalendarMonthBodyCtrl.prototype.buildDateCell = function(opt_date) {
+  PersianCalendarMonthBodyCtrl.prototype.buildDateCell = function(opt_date) {
     var monthCtrl = this.monthCtrl;
     var calendarCtrl = this.calendarCtrl;
 
@@ -155,7 +155,7 @@
    * @param {Date=} opt_date
    * @return {boolean} Whether the date is enabled.
    */
-  CalendarMonthBodyCtrl.prototype.isDateEnabled = function(opt_date) {
+  PersianCalendarMonthBodyCtrl.prototype.isDateEnabled = function(opt_date) {
     return this.dateUtil.isDateWithinRange(opt_date,
           this.calendarCtrl.minDate, this.calendarCtrl.maxDate) &&
           (!angular.isFunction(this.calendarCtrl.dateFilter)
@@ -167,7 +167,7 @@
    * @param rowNumber The week number within the month.
    * @returns {HTMLElement}
    */
-  CalendarMonthBodyCtrl.prototype.buildDateRow = function(rowNumber) {
+  PersianCalendarMonthBodyCtrl.prototype.buildDateRow = function(rowNumber) {
     var row = document.createElement('tr');
     row.setAttribute('role', 'row');
 
@@ -184,7 +184,7 @@
    * @param {Date=} opt_dateInMonth
    * @returns {DocumentFragment} A document fragment containing the <tr> elements.
    */
-  CalendarMonthBodyCtrl.prototype.buildCalendarForMonth = function(opt_dateInMonth) {
+  PersianCalendarMonthBodyCtrl.prototype.buildCalendarForMonth = function(opt_dateInMonth) {
     var date = this.dateUtil.isValidDate(opt_dateInMonth) ? opt_dateInMonth : new Date();
 
     var firstDayOfMonth = this.dateUtil.getFirstDateOfMonth(date);
@@ -294,7 +294,7 @@
    * @param {Date} date
    * @returns {number} The column index of the date in the calendar.
    */
-  CalendarMonthBodyCtrl.prototype.getLocaleDay_ = function(date) {
+  PersianCalendarMonthBodyCtrl.prototype.getLocaleDay_ = function(date) {
     return (moment(date).day() + (7 - this.dateLocale.firstDayOfWeek)) % 7;
   };
 })();

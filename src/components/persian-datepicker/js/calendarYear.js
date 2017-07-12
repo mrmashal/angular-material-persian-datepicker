@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('angular-material-persian-datepicker')
-    .directive('mdPersianCalendarYear', calendarDirective);
+    .directive('mdPersianCalendarYear', persianCalendarDirective);
 
   /**
    * Height of one calendar year tbody. This must be made known to the virtual-repeat and is
@@ -11,7 +11,7 @@
   var TBODY_HEIGHT = 88;
 
   /** Private component, representing a list of years in the calendar. */
-  function calendarDirective() {
+  function persianCalendarDirective() {
     return {
       template:
         '<div class="md-calendar-scroll-mask">' +
@@ -32,7 +32,7 @@
           '</md-virtual-repeat-container>' +
         '</div>',
       require: ['^^mdPersianCalendar', 'mdPersianCalendarYear'],
-      controller: CalendarYearCtrl,
+      controller: PersianCalendarYearCtrl,
       controllerAs: 'yearCtrl',
       bindToController: true,
       link: function(scope, element, attrs, controllers) {
@@ -47,7 +47,7 @@
    * Controller for the mdPersianCalendar component.
    * @ngInject @constructor
    */
-  function CalendarYearCtrl($element, $scope, $animate, $q, $$mdDateUtil) {
+  function PersianCalendarYearCtrl($element, $scope, $animate, $q, $$mdDateUtil) {
 
     /** @final {!angular.JQLite} */
     this.$element = $element;
@@ -89,7 +89,7 @@
    * Initialize the controller by saving a reference to the calendar and
    * setting up the object that will be iterated by the virtual repeater.
    */
-  CalendarYearCtrl.prototype.initialize = function(calendarCtrl) {
+  PersianCalendarYearCtrl.prototype.initialize = function(calendarCtrl) {
     /**
      * Dummy array-like object for virtual-repeat to iterate over. The length is the total
      * number of years that can be viewed. We add 1 extra in order to include the current year.
@@ -113,7 +113,7 @@
    * Gets the "index" of the currently selected date as it would be in the virtual-repeat.
    * @returns {number}
    */
-  CalendarYearCtrl.prototype.getFocusedYearIndex = function() {
+  PersianCalendarYearCtrl.prototype.getFocusedYearIndex = function() {
     var calendarCtrl = this.calendarCtrl;
 
     return this.dateUtil.getYearDistance(
@@ -126,7 +126,7 @@
    * Change the date that is highlighted in the calendar.
    * @param {Date} date
    */
-  CalendarYearCtrl.prototype.changeDate = function(date) {
+  PersianCalendarYearCtrl.prototype.changeDate = function(date) {
     // Initialization is deferred until this function is called because we want to reflect
     // the starting value of ngModel.
     if (!this.isInitialized) {
@@ -151,7 +151,7 @@
    * @param {Date} date
    * @returns {angular.$q.Promise} The animation promise.
    */
-  CalendarYearCtrl.prototype.animateDateChange = function(date) {
+  PersianCalendarYearCtrl.prototype.animateDateChange = function(date) {
     if (this.dateUtil.isValidDate(date)) {
       var monthDistance = this.dateUtil.getYearDistance(this.calendarCtrl.firstRenderableDate, date);
       this.calendarScroller.scrollTop = monthDistance * TBODY_HEIGHT;
@@ -165,7 +165,7 @@
    * @param {Object} event Scope event object passed by the calendar.
    * @param {String} action Action, corresponding to the key that was pressed.
    */
-  CalendarYearCtrl.prototype.handleKeyEvent = function(event, action) {
+  PersianCalendarYearCtrl.prototype.handleKeyEvent = function(event, action) {
     var calendarCtrl = this.calendarCtrl;
     var displayDate = calendarCtrl.displayDate;
 
@@ -201,7 +201,7 @@
   /**
    * Attaches listeners for the scope events that are broadcast by the calendar.
    */
-  CalendarYearCtrl.prototype.attachScopeListeners = function() {
+  PersianCalendarYearCtrl.prototype.attachScopeListeners = function() {
     var self = this;
 
     self.$scope.$on('md-calendar-parent-changed', function(event, value) {
