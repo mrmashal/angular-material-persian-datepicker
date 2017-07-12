@@ -1,0 +1,52 @@
+md-persian-calendar {
+  font-size: 13px;
+  user-select: none;
+}
+
+md-persian-calendar-month .md-calendar-month-label:not(.md-calendar-month-label-disabled) {
+  cursor: pointer;
+}
+
+md-persian-datepicker {
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+._md-datepicker-floating-label > md-persian-datepicker {
+  overflow: visible;
+}
+
+._md-datepicker-floating-label > md-persian-datepicker .md-datepicker-input-container {
+  border: none;
+}
+
+._md-datepicker-floating-label > md-persian-datepicker {
+  overflow: visible; 
+}
+._md-datepicker-floating-label > md-persian-datepicker .md-datepicker-input-container {
+    border: none; 
+}
+._md-datepicker-floating-label > md-persian-datepicker .md-datepicker-button {
+  float: left;
+  margin-top: -12px;
+  top: 9.5px; 
+}
+[dir=rtl] ._md-datepicker-floating-label > md-persian-datepicker .md-datepicker-button {
+  float: right; 
+}
+._md-datepicker-floating-label .md-input {
+  float: none; 
+}
+
+md-persian-calendar .md-datepicker-input-mask:focus {
+  outline: none;
+}
+
+md-persian-datepicker[disabled] .md-datepicker-input-container {
+  border-bottom-color: transparent;
+}
+
+md-persian-datepicker[disabled] .md-datepicker-triangle-button {
+  display: none;
+}

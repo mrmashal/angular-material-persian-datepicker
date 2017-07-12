@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="datepickerBasicUsage">
+
+<head>
+    <title>
+        demoBasicUsage
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+
+    <link rel="stylesheet" href="../../node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="../../src/components/persian-datepicker/datePicker.css">
+
+    <script src="../../node_modules/angular/angular.js"></script>
+    <script src="../../node_modules/angular-animate/angular-animate.js"></script>
+    <script src="../../node_modules/angular-aria/angular-aria.js"></script>
+    <script src="../../node_modules/angular-messages/angular-messages.js"></script>
+    <script src="../../node_modules/angular-material/angular-material.js"></script>
+    <script src="../../node_modules/moment/min/moment.min.js"></script>
+    <script src="../../node_modules/moment-jalaali/build/moment-jalaali.js"></script>
+
+    <script src="../../src/components/persian-datepicker/datePicker.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendar.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendarMonth.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendarMonthBody.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendarYear.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendarYearBody.js"></script>
+    <script src="../../src/components/persian-datepicker/js/dateLocaleProvider.js"></script>
+    <script src="../../src/components/persian-datepicker/js/datepickerDirective.js"></script>
+    <script src="../../src/components/persian-datepicker/js/dateUtil.js"></script>
+    
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <md-content ng-controller="AppCtrl as ctrl" layout-padding ng-cloak>
+  <div layout-gt-xs="row">
+    <div flex-gt-xs>
+      <h4>Standard date-picker</h4>
+      <md-persian-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-persian-datepicker>
+    </div>
+
+    <div flex-gt-xs>
+      <h4>Disabled date-picker</h4>
+      <md-persian-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" disabled></md-persian-datepicker>
+    </div>
+  </div>
+
+  <div layout-gt-xs="row">
+    <div flex-gt-xs>
+      <h4>Opening the calendar when the input is focused</h4>
+      <md-persian-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-open-on-focus></md-persian-datepicker>
+    </div>
+
+    <div flex-gt-xs>
+      <h4>Date-picker that goes straight to the year view</h4>
+      <md-persian-datepicker ng-model="ctrl.myDate" md-current-view="year" md-placeholder="Enter date"></md-persian-datepicker>
+    </div>
+  </div>
+
+  <div layout-gt-xs="row">
+    <div flex-gt-xs>
+      <h4>Custom calendar trigger</h4>
+      <md-persian-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-is-open="ctrl.isOpen"></md-persian-datepicker>
+      <md-button class="md-primary md-raised" ng-click="ctrl.isOpen = true">Open</md-button>
+    </div>
+  </div>
+</md-content>
+
+</body>
+
+</html>

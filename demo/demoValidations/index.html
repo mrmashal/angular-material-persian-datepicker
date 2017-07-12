@@ -1,0 +1,80 @@
+<!doctype html>
+<html ng-app="datepickerValidations">
+
+<head>
+    <title>
+        demoValidations
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+
+    <link rel="stylesheet" href="../../node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="../../src/components/persian-datepicker/datePicker.css">
+
+    <script src="../../node_modules/angular/angular.js"></script>
+    <script src="../../node_modules/angular-animate/angular-animate.js"></script>
+    <script src="../../node_modules/angular-aria/angular-aria.js"></script>
+    <script src="../../node_modules/angular-messages/angular-messages.js"></script>
+    <script src="../../node_modules/angular-material/angular-material.js"></script>
+    <script src="../../node_modules/moment/min/moment.min.js"></script>
+    <script src="../../node_modules/moment-jalaali/build/moment-jalaali.js"></script>
+
+    <script src="../../src/components/persian-datepicker/datePicker.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendar.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendarMonth.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendarMonthBody.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendarYear.js"></script>
+    <script src="../../src/components/persian-datepicker/js/calendarYearBody.js"></script>
+    <script src="../../src/components/persian-datepicker/js/dateLocaleProvider.js"></script>
+    <script src="../../src/components/persian-datepicker/js/datepickerDirective.js"></script>
+    <script src="../../src/components/persian-datepicker/js/dateUtil.js"></script>
+    
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <md-content ng-controller="AppCtrl as ctrl" layout-padding ng-cloak>
+  <div layout-gt-xs="row">
+    <div flex-gt-xs>
+      <h4>Date-picker with min date and max date</h4>
+      <md-persian-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"
+          md-min-date="ctrl.minDate" md-max-date="ctrl.maxDate"></md-persian-datepicker>
+    </div>
+
+    <div flex-gt-xs>
+      <h4>Only weekends are selectable</h4>
+      <md-persian-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"
+          md-date-filter="ctrl.onlyWeekendsPredicate"></md-persian-datepicker>
+    </div>
+  </div>
+
+  <div layout-gt-xs="row">
+    <div flex-gt-xs>
+      <h4>Only weekends within given range are selectable</h4>
+      <md-persian-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"
+          md-min-date="ctrl.minDate" md-max-date="ctrl.maxDate"
+          md-date-filter="ctrl.onlyWeekendsPredicate"></md-persian-datepicker>
+    </div>
+
+    <form name="myForm" flex-gt-xs>
+      <h4>Inside a md-input-container</h4>
+
+      <md-input-container>
+        <label>Enter date</label>
+        <md-persian-datepicker ng-model="ctrl.myDate" name="dateField" md-min-date="ctrl.minDate"
+          md-max-date="ctrl.maxDate"></md-persian-datepicker>
+
+        <div ng-messages="myForm.dateField.$error">
+          <div ng-message="valid">The entered value is not a date!</div>
+          <div ng-message="required">This date is required!</div>
+          <div ng-message="mindate">Date is too early!</div>
+          <div ng-message="maxdate">Date is too late!</div>
+        </div>
+      </md-input-container>
+    </form>
+  </div>
+</md-content>
+
+</body>
+
+</html>
