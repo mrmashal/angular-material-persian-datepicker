@@ -1,18 +1,18 @@
 {
   "name": "angular-material-persian-datepicker",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Persian Datepicker for AngularJS Material",
   "main": [
-    "src/components/persian-datepicker/datePicker.js",
-    "src/components/persian-datepicker/datePicker.css",
-    "src/components/persian-datepicker/js/calendar.js",
-    "src/components/persian-datepicker/js/calendarMonth.js",
-    "src/components/persian-datepicker/js/calendarMonthBody.js",
-    "src/components/persian-datepicker/js/calendarYear.js",
-    "src/components/persian-datepicker/js/calendarYearBody.js",
-    "src/components/persian-datepicker/js/dateLocaleProvider.js",
-    "src/components/persian-datepicker/js/datepickerDirective.js",
-    "src/components/persian-datepicker/js/dateUtil.js"
+    "src/datePicker.js",
+    "src/datePicker.css",
+    "src/js/calendar.js",
+    "src/js/calendarMonth.js",
+    "src/js/calendarMonthBody.js",
+    "src/js/calendarYear.js",
+    "src/js/calendarYearBody.js",
+    "src/js/dateLocaleProvider.js",
+    "src/js/datepickerDirective.js",
+    "src/js/dateUtil.js"
   ],
   "authors": [
     "mrmashal"

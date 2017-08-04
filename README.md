@@ -28,26 +28,25 @@ $ npm install angular-material-persian-datepicker --save
 Load the js and css files in your html:
 
 ```html
-    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
-    <link rel="stylesheet" href="/src/components/persian-datepicker/datePicker.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/moment/min/moment.min.js"></script>
+    <script src="node_modules/moment-jalaali/build/moment-jalaali.js"></script>
 
-    <script src="/node_modules/angular/angular.js"></script>
-    <script src="/node_modules/angular-animate/angular-animate.js"></script>
-    <script src="/node_modules/angular-aria/angular-aria.js"></script>
-    <script src="/node_modules/angular-messages/angular-messages.js"></script>
-    <script src="/node_modules/angular-material/angular-material.js"></script>
-    <script src="/node_modules/moment/min/moment.min.js"></script>
-    <script src="/node_modules/moment-jalaali/build/moment-jalaali.js"></script>
-
-    <script src="/src/components/persian-datepicker/datePicker.js"></script>
-    <script src="/src/components/persian-datepicker/js/calendar.js"></script>
-    <script src="/src/components/persian-datepicker/js/calendarMonth.js"></script>
-    <script src="/src/components/persian-datepicker/js/calendarMonthBody.js"></script>
-    <script src="/src/components/persian-datepicker/js/calendarYear.js"></script>
-    <script src="/src/components/persian-datepicker/js/calendarYearBody.js"></script>
-    <script src="/src/components/persian-datepicker/js/dateLocaleProvider.js"></script>
-    <script src="/src/components/persian-datepicker/js/datepickerDirective.js"></script>
-    <script src="/src/components/persian-datepicker/js/dateUtil.js"></script>
+    <link rel="stylesheet" href="src/datePicker.css">
+    <script src="src/datePicker.js"></script>
+    <script src="src/js/calendar.js"></script>
+    <script src="src/js/calendarMonth.js"></script>
+    <script src="src/js/calendarMonthBody.js"></script>
+    <script src="src/js/calendarYear.js"></script>
+    <script src="src/js/calendarYearBody.js"></script>
+    <script src="src/js/dateLocaleProvider.js"></script>
+    <script src="src/js/datepickerDirective.js"></script>
+    <script src="src/js/dateUtil.js"></script>
 ```
 
 ### Add module dependency
