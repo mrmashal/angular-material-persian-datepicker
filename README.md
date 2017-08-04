@@ -5,6 +5,10 @@ The datepicker component from [AngularJS Material](https://github.com/angular/ma
 [![NPM version](https://badge-me.herokuapp.com/api/npm/angular-material-persian-datepicker.png)](http://badges.enytc.com/for/npm/angular-material-persian-datepicker)
 [![BOWER version](https://badge-me.herokuapp.com/api/bower/mrmashal/angular-material-persian-datepicker.png)](http://badges.enytc.com/for/bower/mrmashal/angular-material-persian-datepicker)
 
+# Demo
+
+You can see a live demo [here](http://mrmashal.github.io/angular-material-persian-datepicker/demo/demoBasicUsage/index.html).
+
 ![Month View](https://user-images.githubusercontent.com/7566014/28975464-53c1a9bc-794f-11e7-8441-347684750e3c.png) ![Year View](https://user-images.githubusercontent.com/7566014/28975474-5fd99cfa-794f-11e7-9c60-18121a6c0e64.png)
 
 ## Installation
