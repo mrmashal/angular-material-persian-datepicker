@@ -2,8 +2,9 @@
 
 The datepicker component from [AngularJS Material](https://github.com/angular/material) tweaked to take dates in the Persian (Jalaali) calendar system, using [moment-jalaali](https://github.com/jalaali/moment-jalaali).
 
-[![NPM version](https://badge-me.herokuapp.com/api/npm/angular-material-persian-datepicker.png)](http://badges.enytc.com/for/npm/angular-material-persian-datepicker)
-[![BOWER version](https://badge-me.herokuapp.com/api/bower/mrmashal/angular-material-persian-datepicker.png)](http://badges.enytc.com/for/bower/mrmashal/angular-material-persian-datepicker)
+[![License](https://img.shields.io/github/license/mrmashal/angular-material-persian-datepicker.svg)](https://en.wikipedia.org/wiki/MIT_License)
+[![Bower](https://img.shields.io/bower/v/angular-material-persian-datepicker.svg)](#)
+[![NPM](https://img.shields.io/npm/v/angular-material-persian-datepicker.svg)](https://www.npmjs.com/package/angular-material-persian-datepicker)
 
 # Demo
 
