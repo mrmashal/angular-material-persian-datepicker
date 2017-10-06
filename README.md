@@ -3,8 +3,8 @@
 The datepicker component from [AngularJS Material](https://github.com/angular/material) tweaked to take dates in the Persian (Jalaali) calendar system, using [moment-jalaali](https://github.com/jalaali/moment-jalaali).
 
 [![License](https://img.shields.io/github/license/mrmashal/angular-material-persian-datepicker.svg)](https://en.wikipedia.org/wiki/MIT_License)
-[![Bower](https://img.shields.io/bower/v/angular-material-persian-datepicker.svg)](#)
 [![NPM](https://img.shields.io/npm/v/angular-material-persian-datepicker.svg)](https://www.npmjs.com/package/angular-material-persian-datepicker)
+[![Bower](https://img.shields.io/bower/v/angular-material-persian-datepicker.svg)](#)
 
 # Demo
 
@@ -14,13 +14,7 @@ You can see a live demo [here](http://mrmashal.github.io/angular-material-persia
 
 ## Installation
 
-You may use bower or npm:
-
-#### Bower
-
-```
-$ bower install angular-material-persian-datepicker --save
-```
+You may use npm or bower:
 
 #### Npm
 
@@ -28,30 +22,18 @@ $ bower install angular-material-persian-datepicker --save
 $ npm install angular-material-persian-datepicker --save
 ```
 
+#### Bower
+
+```
+$ bower install angular-material-persian-datepicker --save
+```
+
 ### Add references to your html
 
-Load the js and css files in your html:
+Load the component's javascript file in your html:
 
 ```html
-    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
-    <script src="node_modules/angular/angular.js"></script>
-    <script src="node_modules/angular-animate/angular-animate.js"></script>
-    <script src="node_modules/angular-aria/angular-aria.js"></script>
-    <script src="node_modules/angular-messages/angular-messages.js"></script>
-    <script src="node_modules/angular-material/angular-material.js"></script>
-    <script src="node_modules/moment/min/moment.min.js"></script>
-    <script src="node_modules/moment-jalaali/build/moment-jalaali.js"></script>
-
-    <link rel="stylesheet" href="src/datePicker.css">
-    <script src="src/datePicker.js"></script>
-    <script src="src/js/calendar.js"></script>
-    <script src="src/js/calendarMonth.js"></script>
-    <script src="src/js/calendarMonthBody.js"></script>
-    <script src="src/js/calendarYear.js"></script>
-    <script src="src/js/calendarYearBody.js"></script>
-    <script src="src/js/dateLocaleProvider.js"></script>
-    <script src="src/js/datepickerDirective.js"></script>
-    <script src="src/js/dateUtil.js"></script>
+    <script src="dist/datePicker.min.js"></script>
 ```
 
 ### Add module dependency
