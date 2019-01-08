@@ -1,6 +1,6 @@
 # Persian Datepicker for AngularJS Material
 
-The datepicker component from [AngularJS Material](https://github.com/angular/material) tweaked to take dates in the Persian (Jalaali) calendar system, using [moment-jalaali](https://github.com/jalaali/moment-jalaali).
+The datepicker component from [AngularJS Material](https://github.com/angular/material) tweaked to take dates in the Persian (Jalaali) calendar system, using [moment-jalaali](https://github.com/jalaali/moment-jalaali). (Note: For Angular 6+ see [this repository by Peyman Ebrahimi](https://github.com/peymanebrahimi/AngularMaterialJalaliDate))
 
 [![License](https://img.shields.io/github/license/mrmashal/angular-material-persian-datepicker.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![NPM](https://img.shields.io/npm/v/angular-material-persian-datepicker.svg)](https://www.npmjs.com/package/angular-material-persian-datepicker)
